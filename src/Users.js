@@ -4,13 +4,13 @@ import UserPoems from "./UserPoems";
 
 
 
-function Users (){
+function Users ({handleNewLyric}){
 
 
 const [users, setUsers] = useState([])
 const [userId, setUserId] = useState()
 const [buttonClicked, setButtonClicked] = useState(false)
-const showUserPoems = <UserPoems userId = {userId}/>
+const showUserPoems = <UserPoems handleNewLyric={handleNewLyric} userId = {userId}/>
 
 
 useEffect(() => {

@@ -1,50 +1,46 @@
 import React, { useState } from "react";
 
-function NewPoem () {   
-
-    //call a random lyric 
+function NewPoem ({userId, lyric}) {   
 
     const [formInput, setFormInput] = useState({
         poem: "",
-        user_id: "",
-        lyrics_id: "",
     })
 
-    const newLyric = {
-        quote: formInput.quote,
-        song: formInput.song,
-        album: formInput.album
+    const newPoem = {
+        poem: formInput.poem,
+        user_id: userId,
+        lyric_id: lyric.id
     }
 
     function handleChange(e){
         setFormInput({...formInput, [e.target.name]: e.target.value})
     }
 
-    function addLyric(e){
+    function addPoem(e){
         e.preventDefault()
 
-        fetch("http://localhost:9292/lyrics", {
+        fetch("http://localhost:9292/poems", {
             method: "POST",
             headers: {
              "Accept": "application/json",
              "Content-Type":"application/json"
         },
-        body: JSON.stringify(newLyric),
+        body: JSON.stringify(newPoem),
     });
+
+    console.log(newPoem)
         
     }
 
     return (
-        <div className="new-lyric-form">
-        <h2>Add your own lyric!</h2>
-        <form onSubmit={addLyric}>
-          <input onChange={handleChange} value={formInput.quote} type="text" name="quote" placeholder="Lyric" />
-          <input onChange={handleChange} value={formInput.song} type="text" name="song" placeholder="Song Title" />
-          <input onChange={handleChange} value={formInput.album} type="text" name="album" placeholder="Album" /> 
-                <button type="submit">ADD LYRIC</button>
+        <div className="new-poem-form">
+            <h1>Your quote is: {lyric.quote}</h1>
+        <form onSubmit={addPoem}>
+          <input onChange={handleChange} value={formInput.poem} type="text" name="poem" placeholder="Create your art    " />
+                <button type="submit">Post it!</button>
         </form>
       </div>
     );
 }
 
-export default LyricsForm;
+export default NewPoem;
