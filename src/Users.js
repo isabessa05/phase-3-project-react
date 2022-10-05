@@ -1,6 +1,5 @@
 import React from "react";
 import {useEffect, useState} from 'react'
-import DisplayUsers from "./DisplayUsers";
 import UserPoems from "./UserPoems";
 
 
@@ -9,8 +8,9 @@ function Users (){
 
 
 const [users, setUsers] = useState([])
-const [showUserPoems, setShowUserPoems] = useState()
+const [userId, setUserId] = useState()
 const [buttonClicked, setButtonClicked] = useState(false)
+const showUserPoems = <UserPoems userId = {userId}/>
 
 
 useEffect(() => {
@@ -22,10 +22,9 @@ useEffect(() => {
     , [])
 
 
-
-    function handleClick() {
+    function handleClick(event) {
         setButtonClicked(!buttonClicked)
-        // setShowUserPoems(<UserPoems userPoems={userPoems}/>)
+        setUserId(event.currentTarget.id)
         console.log("hello")
         console.log(buttonClicked)
 
@@ -40,16 +39,15 @@ useEffect(() => {
         // return <DisplayUsers key={user.id} user = {user} handleClick={handleClick} />
         return (
             <div class="container" > 
-            <button onClick={handleClick} id={user.id}>{user.name}</button>
+            <button onClick={(event) => handleClick(event)} id={user.id}>{user.name}</button>
         </div>
         )
     })
 
 
-
 return (
     <div>
-       {buttonClicked?  null : showUsers}
+       {buttonClicked?  showUserPoems : showUsers}
     </div>
 )
 }
