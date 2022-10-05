@@ -1,4 +1,5 @@
-import PoemCard from "./PoemCard"
+// import PoemCard from "./PoemCard"
+import DisplayUsers from './DisplayUsers'
 import {useEffect, useState} from 'react'
 
 
@@ -8,7 +9,7 @@ function UserPoems ({userId}){
     const [userPoems, setUserPoems] = useState([])
 
     const userPoemCards = userPoems.map((poem)=> {
-        return <PoemCard poem = {poem}/>
+        return <DisplayUsers poem = {poem}/>
     })
 
 
@@ -21,9 +22,10 @@ function UserPoems ({userId}){
         , [])
 
     return (
-        <>
+        <div>
             {userPoemCards}
-        </>
+            <button> Create a new poem </button>
+        </div>
     )
 
 }

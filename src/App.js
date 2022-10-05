@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import AllPoems from './AllPoems'
 import NavBar from './NavBar';
 import Users from "./Users";
+import LyricsForm from "./LyricsForm";
 
 function App() {
 
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route exact path='/users'>
           <Users />
+        </Route>
+        <Route exact path='/lyric'>
+          <LyricsForm/>
         </Route>
       </Switch>
     </div>
