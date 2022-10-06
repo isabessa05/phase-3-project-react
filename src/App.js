@@ -30,6 +30,9 @@ function App() {
         <Route exact path='/users'>
           <Users />
         </Route>
+        <Route exact path='/lyric'>
+          <LyricsForm/>
+        </Route>
       </Switch>
     </div>
   )
