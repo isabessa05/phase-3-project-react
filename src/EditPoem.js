@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
-function EditPoem({ poem }) {
+
+function EditPoem({ handleClickDelete, poem }) {
 
     const [formInput, setFormInput] = useState({
         poem: "",
@@ -25,7 +26,8 @@ function EditPoem({ poem }) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(editedPoem),
-        })
+        });
+
     };
 
     return (
