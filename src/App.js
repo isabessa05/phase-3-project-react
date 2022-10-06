@@ -65,6 +65,9 @@ function App() {
         <Route exact path='/newuser'>
           <NewUser />
         </Route>
+        <Route exact path='/lyric'>
+          <LyricsForm/>
+        </Route>
       </Switch>
     </div>
   )
