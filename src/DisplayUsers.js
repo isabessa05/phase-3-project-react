@@ -1,5 +1,6 @@
 
 import './card.css'
+import EditPoem from './EditPoem'
 import {useState} from 'react'
 
 function DisplayUsers({handleClickDelete, poem}) {
@@ -18,15 +19,16 @@ function DisplayUsers({handleClickDelete, poem}) {
   }
       
           return (
-            <div class="card">
-                <div class="header">
+            <div className="card" >
+                <div className="header">
+                  {/* can we include anything in here to show the lyrics we're referring to? */}
                   </div>
-                <div class="container">
+                <div className="container">
                 <p>{poem.poem}</p>
             </div>
             <button onClick={showEdit}> Edit </button>
             <div>
-            {buttonClicked ? <h1>Hi</h1> : null}
+            {buttonClicked ? <EditPoem poem={poem}/> : null}
             </div>
             <button onClick={handleClick}> Delete </button>
         </div>
