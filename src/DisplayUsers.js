@@ -1,33 +1,38 @@
 
-import {useEffect, useState} from 'react'
-import UserPoems from "./UserPoems"
+import './card.css'
+import EditPoem from './EditPoem'
+import {useState} from 'react'
 
-function DisplayUsers({user, handleClick}) {
-
-
-    const [userPoems, setUserPoems] = useState([])
+function DisplayUsers({handleClickDelete, poem}) {
 
 
-    useEffect(() => {
-        fetch(`http://localhost:9292/poems/user/${user.id}`)
-          .then(res => res.json())
-          .then(data =>
-            setUserPoems(data))
-      }
-        , [user.id])
+   const [buttonClicked, setButtonClicked] = useState(false)
 
-    // function handleClick() {
-    //     setButtonClicked(!buttonClicked)
-    //     setShowUserPoems(<UserPoems userPoems={userPoems}/>)
-    // }
+  function handleClick() {
+    handleClickDelete(poem.id)
+  }
 
+  function showEdit () {
 
-    return (
-        <div class="container">
-            <button onClick={handleClick}>{user.name}</button>
+    setButtonClicked(!buttonClicked)
+
+  }
+      
+          return (
+            <div className="card" >
+                <div className="header">
+                  {/* can we include anything in here to show the lyrics we're referring to? */}
+                  </div>
+                <div className="container">
+                <p>{poem.poem}</p>
+            </div>
+            <button onClick={showEdit}> Edit </button>
+            <div>
+            {buttonClicked ? <EditPoem poem={poem}/> : null}
+            </div>
+            <button onClick={handleClick}> Delete </button>
         </div>
-  )
-
-}
+      )} 
+      
 
 export default DisplayUsers
