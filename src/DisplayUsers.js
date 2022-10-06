@@ -1,9 +1,21 @@
 
 import './card.css'
+import {useState} from 'react'
+
+function DisplayUsers({handleClickDelete, poem}) {
 
 
-function DisplayUsers({poem}) {
-   
+   const [buttonClicked, setButtonClicked] = useState(false)
+
+  function handleClick() {
+    handleClickDelete(poem.id)
+  }
+
+  function showEdit () {
+
+    setButtonClicked(!buttonClicked)
+
+  }
       
           return (
             <div class="card">
@@ -12,8 +24,11 @@ function DisplayUsers({poem}) {
                 <div class="container">
                 <p>{poem.poem}</p>
             </div>
-            <button> Edit </button>
-            <button> Delete </button>
+            <button onClick={showEdit}> Edit </button>
+            <div>
+            {buttonClicked ? <h1>Hi</h1> : null}
+            </div>
+            <button onClick={handleClick}> Delete </button>
         </div>
       )} 
       

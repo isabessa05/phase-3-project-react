@@ -1,16 +1,17 @@
 import React from "react";
 import {useEffect, useState} from 'react'
 import UserPoems from "./UserPoems";
+import NewUser from "./NewUser";
 
 
 
-function Users ({handleNewLyric}){
+function Users ({handleClickDelete, handleClickDeleteUser}){
 
 
 const [users, setUsers] = useState([])
 const [userId, setUserId] = useState()
 const [buttonClicked, setButtonClicked] = useState(false)
-const showUserPoems = <UserPoems handleNewLyric={handleNewLyric} userId = {userId}/>
+const showUserPoems = <UserPoems handleClickDelete={handleClickDelete} userId = {userId}/>
 
 
 useEffect(() => {
@@ -25,22 +26,31 @@ useEffect(() => {
     function handleClick(event) {
         setButtonClicked(!buttonClicked)
         setUserId(event.currentTarget.id)
-        console.log("hello")
-        console.log(buttonClicked)
-
-        //store id with user.id inside a state and call that inside userpoems to fetch and display the poems for that specific user
     }
 
-    function moveBack()
-    {
-        setButtonClicked(!buttonClicked)
+    function handleClickUser (e) {
+        const newUserId = (e.currentTarget.id)
+        handleClickDeleteUser(newUserId)
     }
+
+    // function moveBack()
+    // {
+    //     setButtonClicked(!buttonClicked)
+    // }
+
+
     const showUsers = users.map((user) => {
-        // return <DisplayUsers key={user.id} user = {user} handleClick={handleClick} />
         return (
             <div class="container" > 
+            <div>
             <button onClick={(event) => handleClick(event)} id={user.id}>{user.name}</button>
         </div>
+            <div>
+            <button onClick={(e) => handleClickUser(e)} id={user.id}>X</button>
+            </div>
+            <br></br>
+            </div>
+
         )
     })
 

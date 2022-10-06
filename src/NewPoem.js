@@ -28,7 +28,6 @@ function NewPoem ({userId, lyric}) {
         body: JSON.stringify(newPoem),
     });
 
-    console.log(newPoem)
         
     }
 
@@ -36,7 +35,7 @@ function NewPoem ({userId, lyric}) {
         <div className="new-poem-form">
             <h1>Your quote is: {lyric.quote}</h1>
         <form onSubmit={addPoem}>
-          <input onChange={handleChange} value={formInput.poem} type="text" name="poem" placeholder="Create your art    " />
+          <input onChange={handleChange} value={formInput.poem} type="text" name="poem" placeholder="Create your art " />
                 <button type="submit">Post it!</button>
         </form>
       </div>

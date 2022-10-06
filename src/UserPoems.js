@@ -4,18 +4,16 @@ import { useEffect, useState } from 'react'
 import NewPoem from './NewPoem'
 
 
-function UserPoems({ handleNewLyric, userId }) {
+function UserPoems({ handleClickDelete, userId }) {
 
 
     const [userPoems, setUserPoems] = useState([])
     const [lyric, setLyric] = useState({})
     const [buttonClicked, setButtonClicked] = useState(false)
-    const [lyricId, setLyricId] = useState()
-    const [lyricQuote, setLyricQuote] = useState()
 
 
     const userPoemCards = userPoems.map((poem) => {
-        return <DisplayUsers poem={poem} />
+        return <DisplayUsers handleClickDelete={handleClickDelete} poem={poem} />
     })
 
 

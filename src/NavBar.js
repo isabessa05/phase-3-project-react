@@ -11,6 +11,7 @@ function NavBar () {
         <Link to="/poems"> All Poems   </Link>
         <Link to="/users"> Users </Link>
         <Link to="/lyric"> Add your own lyric! </Link>
+        <Link to="/newuser"> New User? Start here! </Link>
         </div>
         </nav>
     )
