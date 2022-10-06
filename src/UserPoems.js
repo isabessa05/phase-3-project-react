@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import NewPoem from './NewPoem'
 
 
-function UserPoems({ handleClickDelete, userId }) {
+function UserPoems({ handleClickDelete,setPoems, userId }) {
 
 
     const [userPoems, setUserPoems] = useState([])
@@ -43,7 +43,7 @@ function UserPoems({ handleClickDelete, userId }) {
             {userPoemCards}
             <button onClick={handleNewLyric}> Create a new poem </button>
             <div>
-                {buttonClicked ? <NewPoem lyric={lyric} userId={userId} /> : null}
+                {buttonClicked ? <NewPoem setPoems={setPoems} lyric={lyric} userId={userId} /> : null}
             </div>
 
         </div>

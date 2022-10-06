@@ -57,7 +57,7 @@ function App() {
           <AllPoems poems={poems} />
         </Route>
         <Route exact path='/users'>
-          <Users handleClickDeleteUser={handleClickDeleteUser} handleClickDelete={handleClickDelete}/>
+          <Users setPoems={setPoems}  handleClickDeleteUser={handleClickDeleteUser} handleClickDelete={handleClickDelete}/>
         </Route>
         <Route exact path='/lyric'>
           <LyricsForm/>

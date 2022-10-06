@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewPoem ({userId, lyric}) {   
+function NewPoem ({userId,setPoems, lyric}) {   
 
     const [formInput, setFormInput] = useState({
         poem: "",
@@ -26,8 +26,13 @@ function NewPoem ({userId, lyric}) {
              "Content-Type":"application/json"
         },
         body: JSON.stringify(newPoem),
-    });
+    })
+    .then(res=>res.json())
+    .then(data=> setPoems((prev)=>[...prev,data]))
 
+    //add state to post to the page
+    //add state for the array of all the poems - the new poem will be sent over and we will add the new poem to the array of all poems
+    //i.e. set poems to ...all poems, new poem]
         
     }
 

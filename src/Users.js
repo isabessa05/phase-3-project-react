@@ -5,13 +5,13 @@ import NewUser from "./NewUser";
 
 
 
-function Users ({handleClickDelete, handleClickDeleteUser}){
+function Users ({handleClickDelete, setPoems,handleClickDeleteUser}){
 
 
 const [users, setUsers] = useState([])
 const [userId, setUserId] = useState()
 const [buttonClicked, setButtonClicked] = useState(false)
-const showUserPoems = <UserPoems handleClickDelete={handleClickDelete} userId = {userId}/>
+
 
 
 useEffect(() => {
@@ -29,8 +29,13 @@ useEffect(() => {
     }
 
     function handleClickUser (e) {
-        const newUserId = (e.currentTarget.id)
+        const newUserId = parseInt(e.currentTarget.id)
         handleClickDeleteUser(newUserId)
+        console.log(newUserId);
+        let newUserArray = users.filter(el=>el.id !== newUserId)
+        console.log(users);
+        console.log(newUserArray);
+        setUsers(newUserArray)
     }
 
     // function moveBack()
@@ -39,7 +44,11 @@ useEffect(() => {
     // }
 
 
-    const showUsers = users.map((user) => {
+
+
+return (
+    <div>
+       {buttonClicked?  <UserPoems setPoems={setPoems} handleClickDelete={handleClickDelete} userId = {userId}/> :  users.map((user) => {
         return (
             <div class="container" > 
             <div>
@@ -52,12 +61,7 @@ useEffect(() => {
             </div>
 
         )
-    })
-
-
-return (
-    <div>
-       {buttonClicked?  showUserPoems : showUsers}
+    })}
     </div>
 )
 }
