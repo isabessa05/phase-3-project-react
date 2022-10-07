@@ -2,9 +2,10 @@
     width: 90%;
     display: grid;
     flex-direction: column;
-    border: 5px black solid;
+    border: 2px black solid;
     margin-left: 5%;
-
+    box-shadow: 4px 4px gray;
+    background-color: white;
 }
 
 .header {

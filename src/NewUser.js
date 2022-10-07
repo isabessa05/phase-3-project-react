@@ -32,7 +32,7 @@ function NewUser () {
     return (
         <div className="new-user-form">
             <h2>Welcome to Poemland</h2>
-            <h3> blablabalbalbla </h3>
+            <h3> Create your user name below! </h3>
         <form onSubmit={addUser}>
           <input onChange={handleChange} value={formInput.name} type="text" name="name" placeholder="User name " />
                 <button type="submit"> Create </button>
