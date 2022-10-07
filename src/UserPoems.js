@@ -37,7 +37,6 @@ function UserPoems({ userId }) {
     }
 
 
-
     useEffect(() => {
         fetch(`http://localhost:9292/poems/user/${userId}`)
             .then(res => res.json())
@@ -46,12 +45,29 @@ function UserPoems({ userId }) {
     }
         , [])
 
+
+    function addPoem(e, newPoem) {
+        e.preventDefault()
+
+        fetch("http://localhost:9292/poems", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newPoem),
+        })
+            .then(res => res.json())
+            .then(data => setUserPoems([...userPoems, data]))
+
+    }
+
     return (
         <div>
             {userPoemCards}
             <button onClick={handleNewLyric}> Create a new poem </button>
             <div>
-                {buttonClicked ? <NewPoem setUserPoems={setUserPoems} lyric={lyric} userId={userId} /> : null}
+                {buttonClicked ? <NewPoem addPoem={addPoem} lyric={lyric} userId={userId} /> : null}
             </div>
 
         </div>

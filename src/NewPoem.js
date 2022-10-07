@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-function NewPoem ({userId, setUserPoem, lyric}) {   
+function NewPoem ({userId, addPoem, lyric}) {   
 
     const [formInput, setFormInput] = useState({
         poem: "",
     })
+
 
     const newPoem = {
         poem: formInput.poem,
@@ -16,26 +17,15 @@ function NewPoem ({userId, setUserPoem, lyric}) {
         setFormInput({...formInput, [e.target.name]: e.target.value})
     }
 
-    function addPoem(e){
-        e.preventDefault()
-
-        fetch("http://localhost:9292/poems", {
-            method: "POST",
-            headers: {
-             "Accept": "application/json",
-             "Content-Type":"application/json"
-        },
-        body: JSON.stringify(newPoem),
-    })
-    // .then(res=>res.json())
-    // .then(data=> setUserPoem((prev)=>[...prev,data]))
-        
+    function handleSubmit (e) {
+        addPoem(e, newPoem)
     }
+
 
     return (
         <div className="new-poem-form">
             <h1>Your quote is: {lyric.quote}</h1>
-        <form onSubmit={addPoem}>
+        <form onSubmit={(e) => handleSubmit(e)} >
           <input onChange={handleChange} value={formInput.poem} type="text" name="poem" placeholder="Create your art " />
                 <button type="submit">Post it!</button>
         </form>
