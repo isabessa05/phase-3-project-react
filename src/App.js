@@ -25,10 +25,10 @@ function App() {
 
 
   
-    function handleClickDelete(poemId) {
-      fetch(`http://localhost:9292/poems/${poemId}`, 
-      { method: 'DELETE' })
-    }
+    // function handleClickDelete(poemId) {
+    //   fetch(`http://localhost:9292/poems/${poemId}`, 
+    //   { method: 'DELETE' })
+    // }
 
     function handleClickDeleteUser(userId) {
       fetch(`http://localhost:9292/users/${userId}`, 
@@ -57,7 +57,7 @@ function App() {
           <AllPoems poems={poems} />
         </Route>
         <Route exact path='/users'>
-          <Users setPoems={setPoems}  handleClickDeleteUser={handleClickDeleteUser} handleClickDelete={handleClickDelete}/>
+          <Users  handleClickDeleteUser={handleClickDeleteUser} />
         </Route>
         <Route exact path='/lyric'>
           <LyricsForm/>

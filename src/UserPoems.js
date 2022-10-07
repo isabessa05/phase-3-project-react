@@ -4,12 +4,22 @@ import { useEffect, useState } from 'react'
 import NewPoem from './NewPoem'
 
 
-function UserPoems({ handleClickDelete,setPoems, userId }) {
+function UserPoems({ userId }) {
 
 
     const [userPoems, setUserPoems] = useState([])
     const [lyric, setLyric] = useState({})
     const [buttonClicked, setButtonClicked] = useState(false)
+
+
+    function handleClickDelete(poemId) {
+        fetch(`http://localhost:9292/poems/${poemId}`,
+            { method: 'DELETE' })
+        let newUserArray = userPoems.filter(el => el.id !== poemId)
+        console.log(newUserArray);
+        setUserPoems(newUserArray)
+
+    }
 
 
     const userPoemCards = userPoems.map((poem) => {
@@ -23,8 +33,6 @@ function UserPoems({ handleClickDelete,setPoems, userId }) {
             .then(res => res.json())
             .then(lyricData =>
                 setLyric(lyricData))
-
-        { buttonClicked ? console.log('hello') : console.log(lyric) }
 
     }
 
@@ -43,7 +51,7 @@ function UserPoems({ handleClickDelete,setPoems, userId }) {
             {userPoemCards}
             <button onClick={handleNewLyric}> Create a new poem </button>
             <div>
-                {buttonClicked ? <NewPoem setPoems={setPoems} lyric={lyric} userId={userId} /> : null}
+                {buttonClicked ? <NewPoem setUserPoems={setUserPoems} lyric={lyric} userId={userId} /> : null}
             </div>
 
         </div>

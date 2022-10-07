@@ -1,7 +1,7 @@
 
 import './card.css'
-import EditPoem from './EditPoem'
 import { useState } from 'react'
+
 
 function DisplayUsers({ handleClickDelete, poem }) {
 
@@ -9,7 +9,7 @@ function DisplayUsers({ handleClickDelete, poem }) {
   const [buttonClicked, setButtonClicked] = useState(false)
   const [thisPoem, setThisPoem] = useState(poem)
 
-  function handleClick() {
+  function handleClick(e) {
     handleClickDelete(thisPoem.id)
   }
 
@@ -19,38 +19,35 @@ function DisplayUsers({ handleClickDelete, poem }) {
 
   }
 
-
-
   //EDIT POEM 
+  const [formInput, setFormInput] = useState({
+    poem: "",
+  })
 
-    const [formInput, setFormInput] = useState({
-        poem: "",
-    })
+  function handleChange(e) {
+    setFormInput(e.target.value)
+    console.log(formInput)
+  }
 
-    function handleChange(e) {
-        setFormInput(e.target.value)
-        console.log(formInput)
-    }
+  const editedPoem = {
+    poem: formInput
+  }
 
-    const editedPoem = {
-        poem: formInput
-    }
+  function editPoem(e) {
+    e.preventDefault()
 
-    function editPoem(e) {
-        e.preventDefault()
+    fetch(`http://localhost:9292/poems/${poem.id}`, {
+      method: "PATCH",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedPoem),
+    });
+    // let newPoemArray = poem.filter(el=>el.id !== newUserId)
+    setThisPoem(editedPoem)
 
-        fetch(`http://localhost:9292/poems/${poem.id}`, {
-            method: "PATCH",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedPoem),
-        });
-        // let newPoemArray = poem.filter(el=>el.id !== newUserId)
-        setThisPoem(editedPoem)
-
-    }
+  }
 
 
   function ePoem() {
@@ -82,7 +79,7 @@ function DisplayUsers({ handleClickDelete, poem }) {
       <div>
         {buttonClicked ? ePoem() : null}
       </div>
-      <button onClick={handleClick}> Delete </button>
+      <button onClick={(e) => handleClick(e)} id={poem.id}> Delete </button>
     </div>
   )
 }
