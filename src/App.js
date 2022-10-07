@@ -53,6 +53,9 @@ function App() {
     <div>
       <NavBar />
       <Switch>
+        <Route exact path='/'>
+          <h1> Welcome to Poemland</h1>
+        </Route>
         <Route exact path='/poems'>
           <AllPoems poems={poems} />
         </Route>

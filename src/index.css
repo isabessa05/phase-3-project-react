@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgba(168, 191, 164, 0.693);
+  background-color: rgba(168, 191, 164, 0.743);
   font-family: serif;
 }
 
@@ -17,4 +17,25 @@ code {
 button {
   background-color: rgba(225, 239, 223, 0.693);
   border-radius: 8px;
+}
+
+h2 {
+  font-family: serif
+}
+
+h1 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+nav {
+  display: center;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: rgba(238, 244, 237, 0.673);
+  padding: 2px 16px;    
+  box-shadow: 4px 4px gray;
+  margin-bottom: 5px;
+  font-size: large;
 }
