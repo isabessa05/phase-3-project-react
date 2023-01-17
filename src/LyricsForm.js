@@ -38,7 +38,7 @@ function LyricsForm () {
           <input onChange={handleChange} value={formInput.quote} type="text" name="quote" placeholder="Lyric" />
           <input onChange={handleChange} value={formInput.song} type="text" name="song" placeholder="Song Title" />
           <input onChange={handleChange} value={formInput.album} type="text" name="album" placeholder="Album" /> 
-                <button type="submit">ADD LYRIC</button>
+                <button className="dark-green-button" type="submit">ADD LYRIC</button>
         </form>
       </div>
     );

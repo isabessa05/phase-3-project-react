@@ -35,7 +35,7 @@ function NewUser () {
             <h3> Create your user name below! </h3>
         <form onSubmit={addUser}>
           <input onChange={handleChange} value={formInput.name} type="text" name="name" placeholder="User name " />
-                <button type="submit"> Create </button>
+                <button className="dark-green-button" type="submit"> Create </button>
         </form>
       </div>
     );

@@ -63,9 +63,9 @@ function UserPoems({ userId }) {
     }
 
     return (
-        <div>
+        <div className='user-poems-container'>
             {userPoemCards}
-            <button onClick={handleNewLyric}> Create a new poem </button>
+            <button className="dark-green-button" onClick={handleNewLyric}> Create A New Poem </button>
             <div>
                 {buttonClicked ? <NewPoem addPoem={addPoem} lyric={lyric} userId={userId} /> : null}
             </div>

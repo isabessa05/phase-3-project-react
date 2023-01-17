@@ -24,10 +24,10 @@ function NewPoem ({userId, addPoem, lyric}) {
 
     return (
         <div className="new-poem-form">
-            <h1>Your quote is: {lyric.quote}</h1>
+            <h2 className="new-poem-prompt">Your quote is: {lyric.quote}</h2>
         <form onSubmit={(e) => handleSubmit(e)} >
-          <input onChange={handleChange} value={formInput.poem} type="text" name="poem" placeholder="Create your art " />
-                <button type="submit">Post it!</button>
+          <input onChange={handleChange} value={formInput.poem} type="text" name="poem" placeholder="Create your prose..." />
+                <button className="dark-green-button" type="submit">Post it!</button>
         </form>
       </div>
     );

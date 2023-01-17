@@ -50,12 +50,12 @@ return (
     <div>
        {buttonClicked?  <UserPoems setPoems={setPoems} handleClickDelete={handleClickDelete} userId = {userId}/> :  users.map((user) => {
         return (
-            <div class="container" > 
+            <div class="user-container" > 
             <div>
-            <button onClick={(event) => handleClick(event)} id={user.id}>{user.name}</button>
-        </div>
-            <div>
-            <button onClick={(e) => handleClickUser(e)} id={user.id}>X</button>
+            <button className="user-button" onClick={(event) => handleClick(event)} id={user.id}>{user.name}</button>
+        {/* </div>
+            <div> */}
+            <button class = "user-x-button" onClick={(e) => handleClickUser(e)} id={user.id}>X</button>
             </div>
             <br></br>
             </div>
